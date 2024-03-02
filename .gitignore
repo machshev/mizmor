@@ -7,6 +7,9 @@
 *.dll
 *.so
 *.dylib
+mizmor
+*.sf2
+*.mid
 
 # Test binary, built with `go test -c`
 *.test
