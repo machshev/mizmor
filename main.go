@@ -15,10 +15,12 @@ func main() {
 	err = gen.GenMidi("out")
 	if err != nil {
 		fmt.Println("Error:", err)
+		return
 	}
 
 	err = play.Play("out")
 	if err != nil {
 		fmt.Printf("Error: %s", err)
+		return
 	}
 }

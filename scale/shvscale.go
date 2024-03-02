@@ -51,7 +51,7 @@ func NewPsalmScaleSHV() scaleSHV {
 	return scale
 }
 
-func (s scaleSHV) fixed(id uint8) (Note, error) {
+func (s scaleSHV) Fixed(id uint8) (Note, error) {
 	if id >= s.baseScaleLen {
 		return 0, fmt.Errorf(
 			"index '%d' is out of base scale range [0-%d]",
@@ -62,7 +62,7 @@ func (s scaleSHV) fixed(id uint8) (Note, error) {
 	return s.notes[s.startNote+id], nil
 }
 
-func (s scaleSHV) relative(fixedId uint8, relId uint8) ([]Note, error) {
+func (s scaleSHV) Relative(fixedId uint8, relId uint8) ([]Note, error) {
 	relNotes := []Note{}
 
 	if fixedId >= s.baseScaleLen {

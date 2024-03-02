@@ -13,9 +13,9 @@ type Generator struct {
 	scale scale.Scale
 }
 
-func NewGenerator(scale scale.Scale) *Generator {
+func NewGenerator(s scale.Scale) *Generator {
 	return &Generator{
-		scale: scale,
+		scale: s,
 	}
 }
 
@@ -39,9 +39,14 @@ func (g Generator) GenMidi(filename string) error {
 	sequence := []uint8{0, 1, 2, 3, 4, 5, 6, 5, 4, 3, 2, 1, 0}
 
 	for id := range sequence {
-		note := g.scale.fixed(id)
-		piano.Add(0, midi.NoteOn(0, note, 120))
-		piano.Add(clock.Ticks4th(), midi.NoteOff(0, note))
+		note, err := g.scale.Fixed(uint8(id))
+		if err != nil {
+			return fmt.Errorf(
+				"can't determine fixed scale note id '%d': %w", id, err,
+			)
+		}
+		piano.Add(0, midi.NoteOn(0, uint8(note), 120))
+		piano.Add(clock.Ticks4th(), midi.NoteOff(0, uint8(note)))
 	}
 
 	piano.Close(0)

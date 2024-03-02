@@ -10,7 +10,7 @@ func Play(filename string) error {
 	s := fluidsynth2.NewSettings()
 
 	synth := fluidsynth2.NewSynth(s)
-	if _, err := synth.SFLoad("soundfont.sf2", false); err != nil {
+	if _, err := synth.SFLoad("SuperHarp.sf2", false); err != nil {
 		return fmt.Errorf("failed to play midi: %w", err)
 	}
 
