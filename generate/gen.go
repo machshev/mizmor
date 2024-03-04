@@ -38,8 +38,8 @@ func (g Generator) GenMidi(filename string) error {
 
 	sequence := []uint8{0, 1, 2, 3, 4, 5, 6, 5, 4, 3, 2, 1, 0}
 
-	for id := range sequence {
-		note, err := g.scale.Fixed(uint8(id))
+	for _, id := range sequence {
+		note, err := g.scale.Fixed(id)
 		if err != nil {
 			return fmt.Errorf(
 				"can't determine fixed scale note id '%d': %w", id, err,

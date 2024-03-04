@@ -22,6 +22,7 @@ type scaleSHV struct {
 func NewPsalmScaleSHV() scaleSHV {
 	scale := scaleSHV{
 		notes: []Note{
+			71, // B4
 			72, // C5
 			75, // D5#
 			76, // E5
@@ -35,7 +36,7 @@ func NewPsalmScaleSHV() scaleSHV {
 			90, // F6
 			91, // G6
 		},
-		startNote:    1,
+		startNote:    2,
 		baseScaleLen: 7,
 		ornaments: []Offsets{
 			{1},          // pashta
